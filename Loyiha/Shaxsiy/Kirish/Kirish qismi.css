@@ -1,0 +1,72 @@
+.container{
+    width: 1140px;
+    margin:  0 auto;
+}
+body {
+    background-image: url("/Loyiha/Shaxsiy/Rasmlar/orqa\ fon.jpg");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    min-height: 100px;
+}
+.tanlov-fan{
+    text-align: center;
+    width: 100%;
+     padding: 10px;
+  }
+ h1{
+    color : #eaf9f0;
+    border-radius:10px;
+     background: linear-gradient(to right, #17776a, #4ade80, #17776a);
+     display: inline-block;
+    }
+    ul {
+    list-style: none;
+    }
+.tugmalar {
+    padding: 100px;
+}
+.tugma {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button{
+    color: #d9ffe8;
+    padding:  10px 100px ;
+    font-weight: 700; 
+    background: linear-gradient(to right, #17776a, #4ade80);
+     border-radius: 5px;
+     text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.button:hover{
+    color: rgb(254, 255, 254);
+    border:  solid rgb(21, 32, 233);
+  }
+/*footer qismi*/
+.footer{
+     padding: 100px 0;
+    background-color: #021017;
+    text-align: center;
+    margin-top: 50px;
+    width: 100;
+}
+.ijtimoiy-tarmoqlar  {
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.9s;
+}
+.ijtimoiy-tarmoq a {
+ transition: all 0.3s;
+}
+.ijtimoiy-tarmoqlar a:hover{
+       color:rgb(204, 160, 245);
+}
+.footer-matn {
+    color: #797979;
+}
+

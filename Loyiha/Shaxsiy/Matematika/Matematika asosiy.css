@@ -1,0 +1,131 @@
+.container{
+    width: 1140px;
+    margin:  0 auto;
+}
+
+
+.brend img {
+    border-radius: 50% ;
+    width: 7%;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+body {
+    background-image: url("../Rasmlar/matematika\ orqa\ fon.jpg");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    min-height: 100px;
+}
+.qidiruv{
+    position: fixed;
+    width: 1140px;
+}
+
+
+.qidiruv-elementlari{
+     background: linear-gradient(to right, #17776a, #4ade80, #17776a);
+    display:flex;
+    justify-content: center;
+    gap:1%;
+    padding: 30px;
+    border-radius: 50px;
+    margin-top: 10px;
+    
+
+}
+
+.qidiruv-elementi a{
+   text-decoration: none;
+}
+ul {
+    list-style-type: none; 
+} 
+
+.tugma {
+    color: white;
+     background: linear-gradient(to right,rgb(7, 42, 0), rgb(0, 103, 39) );
+     color: #6cfaac;
+    border: 2px solid rgb(161, 249, 183) ;
+    border-radius: 5px;
+    padding: 10px 50px;
+     transition: all 0.2s ease-in-out;
+}
+.tugma:hover {
+    background-position:  left;
+     background: linear-gradient(to right, rgb(2, 69, 28) , rgb(7, 42, 0));
+     color:#FFFFFF;
+     border: 3px solid rgb(255, 255, 255) ;
+    }
+     .fanni-ozgartirish a {
+        color: rgb(89, 162, 235);
+         transition: all 0.2s ease-in-out;
+     }
+      .fanni-ozgartirish a:hover{
+        color: rgb(138, 189, 239);
+     }
+/*Asosiy qism*/
+.asosiy-tushunchalar{
+    margin-top: 8.5rem;
+    background-color: rgb(65, 151, 111);
+    border-radius: 50px;
+    display: flex;
+     display: inline-block;
+    justify-content: center;
+    gap: 50px;
+    height: 400px;
+    margin-bottom: 0 20px;
+}
+.asosiy-matn{
+  background-color:rgb(11, 117, 91);
+  margin: 10px 10px ;
+  border-radius: 20px;
+  
+  
+}
+
+.asosiy-rasm img{
+    border-radius: 50px ;
+    width: 100%;
+    display: inline-block;
+    float: left;
+    height: 560px;
+      margin: 20px -50px ;
+
+}
+.matn{
+    padding:  80px 90px ;
+    font-size: 40px;
+    font-weight:900 ;
+    line-height: 40px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.matematika{
+    color: rgb(49, 5, 138);
+}
+/*Footer qismi*/
+.footer{
+     padding: 100px 0;
+    background-color: #021017;
+    text-align: center;
+    margin-top: 50px;
+    width: 100;
+}
+.ijtimoiy-tarmoqlar  {
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.9s;
+}
+.ijtimoiy-tarmoq a {
+ transition: all 0.3s;
+}
+.ijtimoiy-tarmoqlar a:hover{
+       color:rgb(204, 160, 245);
+}
+.footer-matn {
+    color: #797979;
+}
