@@ -1,0 +1,78 @@
+.container{
+    width: 1140px;
+    margin: 0 auto;
+}
+.natural{
+    display:flex;
+    flex-direction:column
+     
+}
+body {
+    background-image: url("../Rasmlar/orqa\ fon.jpg");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    min-height: 100px;
+} 
+.qidiruv{
+      background: linear-gradient(to right, #008b33, #003f37, #00762b);
+     position: fixed;
+     width: 1140px;
+     z-index: 20;
+     border-radius: 60px;   
+}
+.qidiruv-elementlari{
+    margin-top: 0;
+    display:flex;
+    justify-content: center;
+    gap: 20%;
+}
+
+.qidiruv-elementlari a {
+    text-decoration: none;
+    margin: 20px 0;
+    color:white;
+     font-size: 30px;
+}
+
+.tugma{
+    background-color: rgb(46, 188, 188);
+      padding: 20px 40px;
+      border-radius: 50px;
+      color:white;
+      transition: all 0.3s ease-in-out;
+}
+.tugma:hover{
+   border: 3px solid rgb(18, 255, 255);
+   background-color: rgb(57, 221, 221);
+}
+
+
+.dars-nomlari{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    margin-top: 150px; /* .qidiruv balandligiga qarab bu qiymatni o'zgartirasiz */
+    padding: 20px;
+   
+    
+}
+.dars-nomi{
+    background: linear-gradient(to right, #4ade80, #17776a, #4ade80);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 60px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    border: 3px solid rgb(4, 95, 95);
+    transition: all 0.3s ease-in-out;
+}
+.dars-nomi:hover{
+     background: linear-gradient(to right, #17776a, #4ade80,#17776a);
+      border: 3px solid aqua;
+      color:rgb(15, 7, 255);
+    }
