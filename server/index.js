@@ -117,12 +117,10 @@ app.post("/api/register", registerLimiter, (req, res) => {
   }
 
   if (password.length < 8) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "Parol kamida 8 ta belgidan iborat bo'lishi kerak.",
-      });
+    return res.status(400).json({
+      success: false,
+      message: "Parol kamida 8 ta belgidan iborat bo'lishi kerak.",
+    });
   }
 
   if (password !== confirmPassword) {
@@ -135,12 +133,10 @@ app.post("/api/register", registerLimiter, (req, res) => {
     .prepare("SELECT id FROM users WHERE phone = ?")
     .get(phone);
   if (existingUser) {
-    return res
-      .status(409)
-      .json({
-        success: false,
-        message: "Bu telefon raqami allaqachon ro'yxatdan o'tgan.",
-      });
+    return res.status(409).json({
+      success: false,
+      message: "Bu telefon raqami allaqachon ro'yxatdan o'tgan.",
+    });
   }
 
   const passwordHash = bcrypt.hashSync(password, 10);
@@ -219,10 +215,22 @@ const protectedRoutes = [
   ["/Shaxsiy/Kirish", path.join(loyihaDir, "Shaxsiy", "Kirish")],
   ["/Shaxsiy/Matematika", path.join(loyihaDir, "Shaxsiy", "Matematika")],
   ["/Shaxsiy/Fizika", path.join(loyihaDir, "Shaxsiy", "Fizika")],
+  ["/Kalkulator", path.join(rootDir, "Kalkulator")],
 ];
 
 protectedRoutes.forEach(([route, directory]) => {
   app.use(route, requireAuth, express.static(directory));
+});
+
+app.get("/", (req, res) => {
+  const welcomePath =
+    "/Shaxsiy/Ro%27yxatdan%20o%27tish/Ro%27yxatdan%20o%27tish%20oynasi.html";
+
+  if (req.cookies?.auth_token) {
+    return res.redirect("/Shaxsiy/Kirish/Kirish%20qismi.html");
+  }
+
+  return res.redirect(welcomePath);
 });
 
 app.use(express.static(loyihaDir));
