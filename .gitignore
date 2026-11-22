@@ -1,1 +1,10 @@
-/html
+node_modules/
+.env
+.env.*
+!.env.example
+cookies.txt
+*.db
+*.sqlite
+*.sqlite3
+server/*.sqlite
+server/*.db

@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+<<<<<<< HEAD
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -38,3 +39,63 @@
          </div>
     </body>
 </html>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kirish</title>
+    <link rel="stylesheet" href="./kirish.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="orqa-fon">
+        <div class="orqa-fon-2">
+          <div class="kirish-matn">Kirish uchun quyidagilarni to'ldiring</div>
+          <div class="navbar">
+            <a href="./Royxat.html" class="yangi-foydalanuvchi"
+              >Yangi foydalanuvchi bo'lsangiz ro'yxatdan o'ting
+            </a>
+            <a
+              href="./Ro'yxatdan o'tish oynasi.html"
+              class="yangi-foydalanuvchi"
+            >
+              Asosiyga qaytish
+            </a>
+          </div>
+        </div>
+        <form id="login-form" class="form" novalidate>
+          <div id="form-message" class="form-message" aria-live="polite"></div>
+
+          <label for="phone" class="matn tel-raqam-matn"
+            >Telefon raqamingizni kiriting</label
+          >
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            class="tel-raqam"
+            placeholder="+998 90 123 45 67"
+            autocomplete="tel"
+            inputmode="tel"
+            required
+          />
+
+          <label for="parol" class="parol-matn">Parolingizni kiriting</label>
+          <input
+            id="parol"
+            type="password"
+            name="password"
+            class="tel-raqam"
+            placeholder="Bu yerga parolni kirting"
+            autocomplete="current-password"
+            required
+          />
+
+          <button type="submit" class="kirish-tugma">Kirish</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+  </body>
+</html>
+>>>>>>> 041c4715b8e86b078fc376547f77f20a7cc18aa5

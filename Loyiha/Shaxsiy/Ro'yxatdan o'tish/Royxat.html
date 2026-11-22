@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+<<<<<<< HEAD
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,3 +41,80 @@
          </div>
     </body>
 </html>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kirish</title>
+    <link rel="stylesheet" href="./kirish.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="orqa-fon">
+        <div class="orqa-fon-2">
+          <div class="kirish-matn">
+            Ro'yxatdan o'tish uchun quyidagilarni to'ldiring
+          </div>
+          <div>
+            <a href="./Kirish qism.html" class="yangi-foydalanuvchi">
+              Tizimda allaqachon bormisiz
+            </a>
+            <a
+              href="./Ro'yxatdan o'tish oynasi.html"
+              class="yangi-foydalanuvchi"
+            >
+              Asosiyga qaytish
+            </a>
+          </div>
+        </div>
+        <form id="register-form" class="form" novalidate>
+          <div id="form-message" class="form-message" aria-live="polite"></div>
+
+          <label for="phone" class="matn tel-raqam-matn"
+            >Telefon raqamingizni kiriting</label
+          >
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            class="tel-raqam"
+            placeholder="+998 90 123 45 67"
+            autocomplete="tel"
+            inputmode="tel"
+            required
+          />
+
+          <label for="parol" class="parol-matn">Parolingizni kiriting</label>
+          <input
+            id="parol"
+            type="password"
+            name="parol"
+            class="tel-raqam"
+            placeholder="Bu yerga parolni kirting"
+            autocomplete="new-password"
+            required
+            minlength="8"
+          />
+
+          <label for="parol2" class="parol-qayta-matn"
+            >Parolingizni qayta kiriting</label
+          >
+          <input
+            id="parol2"
+            type="password"
+            name="parol2"
+            class="tel-raqam"
+            placeholder="Bu yerga parolni qayta kirting"
+            autocomplete="new-password"
+            required
+            minlength="8"
+          />
+
+          <button type="submit" class="royxat-tugma">Ro'yxatdan o'tish</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+  </body>
+</html>
+>>>>>>> 041c4715b8e86b078fc376547f77f20a7cc18aa5
