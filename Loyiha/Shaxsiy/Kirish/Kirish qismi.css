@@ -52,7 +52,7 @@ body {
     background-color: #021017;
     text-align: center;
     margin-top: 50px;
-    width: 100;
+    width: 100%;
 }
 .ijtimoiy-tarmoqlar  {
     display:flex;
@@ -70,3 +70,91 @@ body {
     color: #797979;
 }
 
+@media only screen  and (max-width:767px){
+     .container{
+        width: 100%;
+        
+     }
+    .tanlov-fan{
+       margin: 0 auto;
+    text-align: center;
+    width: 70%;
+     padding: 30px  ;
+     
+      }
+ h1{
+    display: block;
+    width: 100%;
+    font-size: 24px; 
+    padding: 30px 15px; 
+    margin: 0;
+    }
+    .tugmalar{
+        width: 100%;
+        padding: 0px 0;
+        margin: 0 -50px;
+       
+    }
+    .tugma{
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+       
+    }
+    .tugma li {
+        width: 60%;
+        text-align: center;
+      
+    }
+    .button{
+        display: block;
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 2rem;
+        
+    }
+    .footer{
+      right: 0;
+      left: 0;
+    width: 100%;
+}
+}
+
+
+@media only screen and (min-width: 767px) and (max-width: 1035px) {
+    .container {
+        max-width: 960px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    h1.tanlov-fan {
+        display: block;
+        width: 100%;
+        font-size: 28px;
+        padding: 25px 20px;
+        margin: 0;
+    }
+
+    .tugmalar {
+        padding: 70px 0;
+    }
+
+    .tugma {
+        flex-direction: row; 
+        justify-content: center;
+        gap: 80px;
+    }
+
+    .tugma li {
+        width:auto;
+    }
+
+    .button {
+        padding: 20px 100px; 
+    }
+    .footer {
+        padding: 60px 15px;
+    }
+
+}

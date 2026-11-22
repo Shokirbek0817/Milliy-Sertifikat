@@ -1,43 +1,895 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-         <title>Document</title>
-    </head>
-       <body>
-        
-        <div id="calculator">
-           <input  id="display" readonly>
-           <div id="keys">
-               
-           <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
-           <button onclick="appendToDisplay('7')">7</button>
-           <button onclick="appendToDisplay('8')">8</button>
-           <button onclick="appendToDisplay('9')">9</button>
-           <button onclick="appendToDisplay('-')"  class="operator-btn">-</button>
-           <button onclick="appendToDisplay('4')">4</button>
-           <button onclick="appendToDisplay('5')">5</button>
-           <button onclick="appendToDisplay('6')">6</button>
-           <button onclick="appendToDisplay('*')"  class="operator-btn">*</button>
-           <button onclick="appendToDisplay('1')">1</button>
-           <button onclick="appendToDisplay('2')">2</button>
-           <button onclick="appendToDisplay('3')">3</button>
-           <button onclick="appendToDisplay('/')"  class="operator-btn">/</button>
-           <button onclick="appendToDisplay('0')">0</button>
-           <button onclick="appendToDisplay('.')">.</button>
-           <button onclick="calculate()">=</button>
-           <button onclick="clearDisplay()"  class="operator-btn">C</button>
-           
-           
-           
-           
-        </div>
-        </div>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4D Fazo-vaqt | Interaktiv model</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080d18;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#scene {
+    width: 100vw;
+    height: 100vh;
+}
+
+.panel {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 270px;
+    padding: 15px;
+    background: rgba(15,25,45,.94);
+    border: 1px solid #34445f;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+h2 {
+    color: #65c8ff;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.info {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #d4dfef;
+}
+
+.info span {
+    color: white;
+    font-weight: bold;
+}
+
+.legend {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(650px, 94vw);
+    padding: 13px;
+    background: rgba(15,25,45,.96);
+    border: 1px solid #34445f;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+button {
+    padding: 9px 12px;
+    margin: 3px;
+    background: #1769aa;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #268bd8;
+}
+
+button.active {
+    background: #159b72;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.time-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.hint {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 12px;
+    background: rgba(15,25,45,.9);
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #cbd9eb;
+    z-index: 2;
+}
+
+@media(max-width:600px) {
+    .panel {
+        width: 205px;
+        top: 7px;
+        left: 7px;
+        padding: 9px;
+    }
+
+    .hint {
+        display: none;
+    }
+
+    .controls {
+        bottom: 5px;
+    }
+
+    button {
+        padding: 7px;
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="scene"></div>
+
+<!-- MA'LUMOT PANELI -->
+
+<div class="panel">
+
+    <h2>4D FAZO-VAQT</h2>
+
+    <div class="info">
+
+        X: <span id="x">0.00</span><br>
+        Y: <span id="y">0.00</span><br>
+        Z: <span id="z">0.00</span><br>
+        T: <span id="t">0.00</span>
+
+        <hr style="border-color:#34445f;margin:8px 0">
+
+        Obyekt: <span id="objectName">Foton</span><br>
+        Tezlik: <span id="speed">1.00 c</span><br>
+        Xususiy vaqt: <span id="proper">0.00</span>
+
+    </div>
+
+    <div class="legend">
+
+        <div><i class="dot" style="background:#ff4242"></i>X o'qi</div>
+        <div><i class="dot" style="background:#35d17c"></i>Y o'qi</div>
+        <div><i class="dot" style="background:#448cff"></i>Z o'qi</div>
+        <div><i class="dot" style="background:#ffce45"></i>T o'qi</div>
+        <div><i class="dot" style="background:#ff42dc"></i>Foton</div>
+        <div><i class="dot" style="background:#35e9ff"></i>Harakatdagi jism</div>
+        <div><i class="dot" style="background:#ffffff"></i>Tinch jism</div>
+
+    </div>
+
+    <hr style="border-color:#34445f;margin:10px 0">
+
+    <div style="font-size:12px">
+        Obyektni tanlash:
+    </div>
+
+    <button onclick="selectObject(0)">1. Foton</button>
+    <button onclick="selectObject(1)">2. Jism</button>
+    <button onclick="selectObject(2)">3. Tinch</button>
+
+</div>
+
+<!-- KAMERA BOSHQARUVI -->
+
+<div class="hint">
+    Chap tugma: aylantirish<br>
+    O'ng tugma: surish<br>
+    Scroll: yaqinlashtirish<br>
+    Klaviatura 1, 2, 3: obyekt tanlash
+</div>
+
+<!-- ANIMATSIYA BOSHQARUVI -->
+
+<div class="controls">
+
+    <div>
+        <button id="play">⏸ To'xtatish</button>
+        <button id="reset">↺ Boshidan</button>
+        <button id="cameraReset">Kamerani tiklash</button>
+    </div>
+
+    <div style="margin-top:7px;font-size:12px">
+        Kameraning tayyor ko'rinishlari:
+    </div>
+
+    <div>
+        <button onclick="viewTop()">Yuqoridan</button>
+        <button onclick="viewBottom()">Pastdan</button>
+        <button onclick="viewLeft()">Chapdan</button>
+        <button onclick="viewRight()">O'ngdan</button>
+        <button onclick="viewFront()">Oldindan</button>
+        <button onclick="viewBack()">Orqadan</button>
+    </div>
+
+    <input
+        type="range"
+        id="timeline"
+        min="0"
+        max="10"
+        step="0.01"
+        value="0"
+    >
+
+    <div class="time-label">
+        <span>Vaqt: <b id="timeValue">0.00</b></span>
+        <span>10 birlik</span>
+    </div>
+
+</div>
+
+<!-- THREE.JS -->
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+
+import * as THREE from "three";
+
+import {
+    OrbitControls
+} from "three/addons/controls/OrbitControls.js";
 
 
+// ==============================
+// 1. SAHNA
+// ==============================
 
-          <script src="index.js"></script>
-       </body>
-    </html>
+const scene = new THREE.Scene();
+
+scene.background = new THREE.Color(0x080d18);
+
+
+// ==============================
+// 2. KAMERA
+// ==============================
+
+const camera = new THREE.PerspectiveCamera(
+    55,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+const center = new THREE.Vector3(2, 2, 2);
+
+const initialCamera = new THREE.Vector3(13, 11, 15);
+
+camera.position.copy(initialCamera);
+
+
+// ==============================
+// 3. RENDERER
+// ==============================
+
+const renderer = new THREE.WebGLRenderer({
+    antialias: true
+});
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
+
+document
+    .getElementById("scene")
+    .appendChild(renderer.domElement);
+
+
+// ==============================
+// 4. KAMERA BOSHQARUVI
+// ==============================
+
+const controls = new OrbitControls(
+    camera,
+    renderer.domElement
+);
+
+controls.enableRotate = true;
+controls.enableZoom = true;
+controls.enablePan = true;
+
+controls.enableDamping = true;
+controls.dampingFactor = 0.07;
+
+controls.minDistance = 2;
+controls.maxDistance = 70;
+
+controls.minPolarAngle = 0;
+controls.maxPolarAngle = Math.PI;
+
+controls.target.copy(center);
+
+controls.update();
+
+
+// ==============================
+// 5. YORUG'LIK
+// ==============================
+
+scene.add(
+    new THREE.AmbientLight(0xffffff, 1.5)
+);
+
+const light = new THREE.DirectionalLight(
+    0xffffff,
+    2
+);
+
+light.position.set(5, 10, 8);
+
+scene.add(light);
+
+
+// ==============================
+// 6. MATN YARATISH
+// ==============================
+
+function makeText(text, color) {
+
+    const canvas = document.createElement("canvas");
+
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = 512;
+    canvas.height = 256;
+
+    ctx.font = "bold 65px Arial";
+
+    ctx.fillStyle = color;
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(text, 256, 128);
+
+    const texture = new THREE.CanvasTexture(canvas);
+
+    const material = new THREE.SpriteMaterial({
+        map: texture,
+        transparent: true,
+        depthTest: false
+    });
+
+    const sprite = new THREE.Sprite(material);
+
+    sprite.scale.set(2, 1, 1);
+
+    return sprite;
+}
+
+
+// ==============================
+// 7. KOORDINATA O'QLARI
+// ==============================
+
+const origin = new THREE.Vector3(0, 0, 0);
+
+function makeAxis(direction, color, length, label) {
+
+    const arrow = new THREE.ArrowHelper(
+        direction.clone().normalize(),
+        origin,
+        length,
+        color,
+        0.4,
+        0.22
+    );
+
+    scene.add(arrow);
+
+    const text = makeText(label, color);
+
+    text.position.copy(
+        direction.clone()
+        .normalize()
+        .multiplyScalar(length + 0.8)
+    );
+
+    scene.add(text);
+}
+
+
+// X
+makeAxis(
+    new THREE.Vector3(1,0,0),
+    "#ff4242",
+    9,
+    "X"
+);
+
+// Y
+makeAxis(
+    new THREE.Vector3(0,1,0),
+    "#35d17c",
+    9,
+    "Y"
+);
+
+// Z
+makeAxis(
+    new THREE.Vector3(0,0,1),
+    "#448cff",
+    9,
+    "Z"
+);
+
+// T
+const timeDirection = new THREE.Vector3(
+    0.35, 0.45, 0.7
+);
+
+makeAxis(
+    timeDirection,
+    "#ffce45",
+    10,
+    "T (VAQT)"
+);
+
+
+// ==============================
+// 8. FAZOVIY PANJARA
+// ==============================
+
+const grid = new THREE.GridHelper(
+    20,
+    20,
+    0x33445c,
+    0x1c2a3d
+);
+
+scene.add(grid);
+
+
+// ==============================
+// 9. 4D -> 3D PROYEKSIYA
+// ==============================
+
+function project4D(x, y, z, t) {
+
+    return new THREE.Vector3(
+        x + 0.35 * t,
+        y + 0.45 * t,
+        z + 0.70 * t
+    );
+
+}
+
+
+// ==============================
+// 10. OBYEKTLAR
+// ==============================
+
+const objects = [
+
+    {
+        name: "Foton",
+        color: 0xff42dc,
+        velocity: 1,
+        y: 0,
+        z: 0
+    },
+
+    {
+        name: "Harakatdagi jism",
+        color: 0x35e9ff,
+        velocity: 0.35,
+        y: 2,
+        z: 1
+    },
+
+    {
+        name: "Tinch jism",
+        color: 0xffffff,
+        velocity: 0,
+        y: 4,
+        z: 2
+    }
+
+];
+
+
+// ==============================
+// 11. DUNYO CHIZIQLARI
+// ==============================
+
+const markers = [];
+
+objects.forEach((obj) => {
+
+    const points = [];
+
+    for (let t = 0; t <= 10; t += 0.1) {
+
+        const x = obj.velocity * t;
+
+        points.push(
+            project4D(
+                x,
+                obj.y,
+                obj.z,
+                t
+            )
+        );
+
+    }
+
+    const geometry =
+        new THREE.BufferGeometry()
+        .setFromPoints(points);
+
+    const material = new THREE.LineBasicMaterial({
+        color: obj.color,
+        transparent: true,
+        opacity: 0.75
+    });
+
+    const line = new THREE.Line(
+        geometry,
+        material
+    );
+
+    scene.add(line);
+
+
+    // HARAKATLANUVCHI SHAR
+
+    const sphere = new THREE.Mesh(
+
+        new THREE.SphereGeometry(
+            0.18,
+            32,
+            32
+        ),
+
+        new THREE.MeshStandardMaterial({
+            color: obj.color,
+            emissive: obj.color,
+            emissiveIntensity: 0.5
+        })
+
+    );
+
+    scene.add(sphere);
+
+
+    // OBYEKT NOMI
+
+    const label = makeText(
+        obj.name,
+        "#ffffff"
+    );
+
+    scene.add(label);
+
+
+    markers.push({
+        obj,
+        sphere,
+        label,
+        line
+    });
+
+});
+
+
+// ==============================
+// 12. VAQT VA TANLANGAN OBYEKT
+// ==============================
+
+let currentTime = 0;
+
+let playing = true;
+
+let selectedObject = 0;
+
+const timeline =
+    document.getElementById("timeline");
+
+
+// ==============================
+// 13. OBYEKT TANLASH
+// ==============================
+
+function selectObject(index) {
+
+    selectedObject = index;
+
+    updateScene(currentTime);
+
+}
+
+window.selectObject = selectObject;
+
+
+// ==============================
+// 14. SAHNANI YANGILASH
+// ==============================
+
+function updateScene(t) {
+
+    currentTime = t;
+
+    markers.forEach((item) => {
+
+        const obj = item.obj;
+
+        const x = obj.velocity * t;
+
+        const position = project4D(
+            x,
+            obj.y,
+            obj.z,
+            t
+        );
+
+        item.sphere.position.copy(position);
+
+        item.label.position.copy(position);
+
+        item.label.position.y += 0.55;
+
+    });
+
+
+    // TANLANGAN OBYEKT
+
+    const obj = objects[selectedObject];
+
+    const x = obj.velocity * t;
+
+    document.getElementById("x").textContent =
+        x.toFixed(2);
+
+    document.getElementById("y").textContent =
+        obj.y.toFixed(2);
+
+    document.getElementById("z").textContent =
+        obj.z.toFixed(2);
+
+    document.getElementById("t").textContent =
+        t.toFixed(2);
+
+    document.getElementById("timeValue").textContent =
+        t.toFixed(2);
+
+    document.getElementById("objectName").textContent =
+        obj.name;
+
+    document.getElementById("speed").textContent =
+        obj.velocity.toFixed(2) + " c";
+
+
+    const properTime =
+        obj.velocity === 1
+        ? 0
+        : t * Math.sqrt(
+            1 - obj.velocity ** 2
+        );
+
+    document.getElementById("proper").textContent =
+        properTime.toFixed(2);
+
+    timeline.value = t;
+
+}
+
+
+// ==============================
+// 15. KLAVIATURA
+// ==============================
+
+window.addEventListener("keydown", (event) => {
+
+    if (event.key === "1") selectObject(0);
+
+    if (event.key === "2") selectObject(1);
+
+    if (event.key === "3") selectObject(2);
+
+});
+
+
+// ==============================
+// 16. ANIMATSIYANI BOSHQARISH
+// ==============================
+
+document
+.getElementById("play")
+.addEventListener("click", () => {
+
+    playing = !playing;
+
+    document.getElementById("play").textContent =
+        playing
+        ? "⏸ To'xtatish"
+        : "▶ Davom ettirish";
+
+});
+
+
+document
+.getElementById("reset")
+.addEventListener("click", () => {
+
+    currentTime = 0;
+
+    updateScene(0);
+
+});
+
+
+// ==============================
+// 17. KAMERA POZITSIYALARI
+// ==============================
+
+function setCamera(x, y, z) {
+
+    camera.position.set(x, y, z);
+
+    controls.target.copy(center);
+
+    controls.update();
+
+}
+
+window.viewTop = function() {
+    setCamera(2, 22, 2);
+};
+
+window.viewBottom = function() {
+    setCamera(2, -22, 2);
+};
+
+window.viewLeft = function() {
+    setCamera(-22, 2, 2);
+};
+
+window.viewRight = function() {
+    setCamera(22, 2, 2);
+};
+
+window.viewFront = function() {
+    setCamera(2, 2, 22);
+};
+
+window.viewBack = function() {
+    setCamera(2, 2, -22);
+};
+
+
+// KAMERANI TIKLASH
+
+document
+.getElementById("cameraReset")
+.addEventListener("click", () => {
+
+    camera.position.copy(initialCamera);
+
+    controls.target.copy(center);
+
+    controls.update();
+
+});
+
+
+// ==============================
+// 18. VAQT SLAYDERI
+// ==============================
+
+timeline.addEventListener("input", () => {
+
+    playing = false;
+
+    document.getElementById("play").textContent =
+        "▶ Davom ettirish";
+
+    updateScene(
+        Number(timeline.value)
+    );
+
+});
+
+
+// ==============================
+// 19. ASOSIY ANIMATSIYA
+// ==============================
+
+let lastTime = 0;
+
+function animate(now) {
+
+    requestAnimationFrame(animate);
+
+    const delta = lastTime
+        ? Math.min(
+            (now - lastTime) / 1000,
+            0.05
+        )
+        : 0;
+
+    lastTime = now;
+
+    if (playing) {
+
+        currentTime += delta * 0.7;
+
+        if (currentTime >= 10) {
+            currentTime = 0;
+        }
+
+        updateScene(currentTime);
+
+    }
+
+    controls.update();
+
+    renderer.render(scene, camera);
+
+}
+
+updateScene(0);
+
+animate(0);
+
+
+// ==============================
+// 20. EKRAN O'LCHAMI
+// ==============================
+
+window.addEventListener("resize", () => {
+
+    camera.aspect =
+        window.innerWidth / window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+});
+
+</script>
+
+</body>
+</html>

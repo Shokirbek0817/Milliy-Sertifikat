@@ -1,97 +1,476 @@
 .container{
     margin: 0 auto;
     width:1140px;
-    display: flex;
-    flex-direction: row;
 }
-.kiritilgan-javob{
- 
-    padding: 10px 0;
-    background-color: rgb(11, 241, 211);
-   
+body {
+    background-image: url("../Rasmlar/orqa\ fon.jpg");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    min-height: 100px;
 }
-.kiritilgan-javoblar{
-    margin-top: 35rem;
-   background-color: rgb(11, 241, 211);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 20px;
-    font-weight: 500;
-    height: 100vh;
-
-}
-.savol-raqami{
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    font-weight: 500;
-    background-color: rgb(143, 142, 142);
-    border-radius: 50%;
-}
-.kalit{
-    padding: 5px 15px;
-    border-radius: 50%;
-    background-color: rgb(23, 119, 106);
-   }
-
-.kalit:active{
-   background-color: rgb(63, 5, 255);
-    transform: scale(0.9);
-    color: white;
+.navbar{
+  padding: 30px;
+  text-align: center;
+  background-color: rgb(163, 163, 163);
+  border-radius: 4rem;
+  font-size: 40px;
+  position: fixed;
+  top: 0;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+   border: 0.2rem solid rgb(0, 0, 0);
 }
 
-.tekshirish{
-    padding: 10px 10rem;
-    background-color: rgb(23, 115, 103);
-    border: 3px solid rgb(88, 205, 205);
-    border-radius: 50px;
+.navbar a{
+  text-decoration: none;
+  padding: 0.8rem 3rem;
+  border-radius: 4rem;
+  background: #018e56;
+  color: rgb(255, 255, 255);
+  border: 0.2rem solid rgb(3, 183, 132);
+  transition: all 0.3s ease-in-out ;
 }
-.tekshirish:hover{
-    background-color: rgb(29, 148, 132);
-    border: 3px solid rgb(0, 255, 255);
-    color: white;
-   
+.navbar a:hover{
+   background: #2a84cd;
+  color: rgb(212, 211, 211);
+  border: 0.2rem solid rgb(0, 191, 255);
 }
-.tekshirish:active{
- background-color:rgb(22, 201, 177);
-}
-
-/*pdf qism*/
-.pdf-orqafon{
-    background-color: rgb(23, 119, 106);
-    padding: 20px 10%;
-    position: fixed;
-    width: 1100px;
-    z-index: 10;
-    top: 0;
-    
-    
-}
-/* Tugma bosilganda (tanlanganda) chiqadigan rang */
-.kalit.selected {
-    background-color: #3b82f6; /* Ko'k rang (tanlanganini bildiradi) */
-    color: white;
+.navbar a:active{
+   background: #0d5ea0;
 }
 
-/* To'g'ri javob rangi (Tekshirilgandan keyin) */
-.kalit.correct {
-    background-color: #22c55e !important; /* Yashil */
-    color: white !important;
-}
+.orqafon, .ochiq {
+  background: #323232;
+  height:auto;
+  margin-top: 9.5rem;
+  margin-bottom: -8.5rem;
+  border-radius: 5rem;
+  border: 0.3rem solid rgb(175, 173, 173);
 
-/* Xato javob rangi (Tekshirilgandan keyin) */
-.kalit.wrong {
-    background-color: #ef4444 !important; /* Qizil */
-    color: white !important;
 }
-
-.natija-box {
-    margin-top: 20px;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
+.savol-qism{
     text-align: center;
-    background-color: #f1f5f9;
-    display: none; /* Boshlanishida ko'rinmay turadi */
+  
 }
+.savol-qism img{
+    margin: 3rem;
+    border-radius: 1rem;
+    width: 95%;
+   
+}
+
+.kalit{
+   display: grid;
+   grid-template-columns: auto auto;
+   grid-template-rows: auto auto;
+}
+
+.kalit button{
+    padding: 10px 40px ;
+    width: 80%;
+    height: 90%;
+    margin-left: 90px;
+    margin-top:0px;
+    border-radius: 60px;
+    background-color: rgb(71, 241, 122);
+    font-size: 60px;
+    font-weight: 500;
+    color: rgb(1, 58, 13);
+}
+.kalit button:hover{
+    background-color: rgb(16, 202, 72);
+    color: rgb(2, 246, 254);
+    border: solid rgb(0, 255, 170);
+    cursor: pointer;
+}
+.kalit button:active{
+    background-color:rgb(7, 96, 34) ;
+    color: aqua;
+}
+/*Tekshirish qismi*/
+.orqafon-tekshirish button{
+    background-color:#07d441 ;
+    height: 5rem;
+    margin:  4rem;
+    width: 90%;
+    border-radius: 5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+}
+  .orqafon-tekshirish button:hover{
+    background-color:#06ac35 ;
+     border: 0.2rem solid aqua;
+  } 
+  .orqafon-tekshirish button:active{
+      background-color:#07822a ;
+  }
+
+  /*tekshirish qism */
+  .kalit button.tanlangan {
+  background: #2100f6;
+  border: 2px solid #339af0;
+}
+
+.kalit button.togri {
+  background: rgb(0, 128, 32);
+  border: 2px solid green;
+}
+
+.kalit button.xato {
+  background: salmon;
+  border: 2px solid red;
+}
+
+.ochiq input.togri {
+  background: lightgreen;
+  border: 2px solid green;
+}
+.ochiq input.xato{
+  background: salmon;
+  border: 2px solid red;
+}
+.izoh{
+  margin-left: 0.5rem;
+  color: rgb(0, 255, 0);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.natija-oyna{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.natija-oyna.korinadi{
+  display: flex;
+}
+.natija-quti{
+  background: white;
+  border: 10px solid rgba(0, 0, 0, 0.288);
+  padding: 24px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  height: 90%;
+  font-size: 60px;
+}
+
+.ochiq-stil {
+  display: flex;
+  justify-content: center;
+   gap: 2%;
+   margin-bottom: 1rem;
+
+
+}
+.ochiq-stil input {
+  background-color: #bef4cd;
+  padding: 1.2rem;
+  border-radius: 4rem;
+  font-weight: 600;
+  color: #ac0101;
+  font-size: 1.2rem;
+  border: 3px solid rgb(3, 55, 55);
+}
+.ochiq-stil input:hover{
+   background-color: #7fcb95;
+   cursor: pointer;
+}
+.ochiq-tartib-raqam{
+  font-size: 1.8rem;
+ color: #06cb41;
+  border-radius: 4rem;
+  
+}
+#yopish{
+  color: rgb(4, 23, 149);
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  border: 0.2rem solid rgb(86, 108, 255);
+  cursor: pointer;
+  background: rgb(0, 255, 153);
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+#yopish:hover{
+   background: rgba(40, 247, 206, 0.489);
+}
+#yopish:active{
+   background: rgba(22, 164, 136, 0.489);
+}
+
+.stil{
+color: red;
+font-size: 1.2rem;
+font-weight: 500;
+}
+#n-daraja{
+  color: #032e06;
+}
+.yakunlash{
+  margin-top: 9.5rem;
+}
+
+@media only screen and (max-width:767px){
+  .container{
+    width: 90%;
+  }
+  .navbar{
+  padding: 15px;
+  text-align: center;
+  background-color: rgb(163, 163, 163);
+  border-radius: 2rem;
+
+  position: fixed;
+  top: 0;
+  width: 86%;
+  display: flex;
+ flex-direction: column;
+  gap: 10%;
+   border: 0.2rem solid rgb(0, 0, 0);
+}
+
+.navbar a{
+  margin: 5px;
+  font-size: 12px;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  background: #018e56;
+  color: rgb(255, 255, 255);
+  border: 0.1rem solid rgb(3, 183, 132);
+  transition: all 0.3s ease-in-out ;
+}
+  .orqafon, .ochiq {
+  background: #323232;
+  height:auto;
+  margin-top: 10rem;
+  margin-bottom: -9.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgb(175, 173, 173);
+
+}
+.savol-qism{
+    text-align: center;
+  
+}
+.savol-qism img{
+    margin: 0rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
+   
+}
+
+.kalit{
+     display: grid;
+     grid-template-columns: auto auto;
+     grid-template-columns: auto auto;
+     margin:0 auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kalit button{
+    padding: 5px 60px ;
+    width: 50%;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: rgb(71, 241, 122);
+    font-size: 30px;
+    font-weight: 500;
+    color: rgb(1, 58, 13);
+}
+
+.ochiq-stil {
+  display: flex;
+ flex-direction: column;
+   gap: 2%;
+   margin-bottom: 1rem;
+
+
+}
+.ochiq-stil input {
+  background-color: #bef4cd;
+  padding: 0.3rem;
+  border-radius: 4rem;
+  font-weight: 600;
+  color: #ac0101;
+  font-size: 1.2rem;
+  border: 3px solid rgb(3, 55, 55);
+}
+
+.ochiq-tartib-raqam{
+  font-size: 1.8rem;
+ color: #06cb41;
+ margin-left: 10px;
+
+  
+}
+#yopish{
+  color: rgb(4, 23, 149);
+ 
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  border: 0.2rem solid rgb(86, 108, 255);
+  cursor: pointer;
+  background: rgb(0, 255, 153);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.orqafon-tekshirish button{
+    background-color:#07d441 ;
+    height: 5rem;
+    margin: 2rem 1rem;
+    width: 90%;
+    border-radius: 5rem;
+  
+}
+
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1035px){
+  .container{
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .navbar{
+  padding: 15px;
+  text-align: center;
+  background-color: rgb(163, 163, 163);
+  border-radius: 2rem;
+
+  position: fixed;
+  top: 0;
+  width: 95%;
+  display: flex;
+ flex-direction: column;
+  gap: 10%;
+   border: 0.2rem solid rgb(0, 0, 0);
+}
+
+.navbar a{
+  margin: 5px;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  background: #018e56;
+  color: rgb(255, 255, 255);
+  border: 0.1rem solid rgb(3, 183, 132);
+  transition: all 0.3s ease-in-out ;
+}
+  .orqafon, .ochiq {
+  background: #323232;
+  height:auto;
+  margin-top: 12rem;
+  margin-bottom: -9.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgb(175, 173, 173);
+  width: 100%;
+
+}
+.savol-qism{
+    text-align: center;
+  
+}
+.savol-qism img{
+    margin: 0rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
+   
+}
+
+.kalit{
+     display: grid;
+     grid-template-columns: auto auto;
+     grid-template-columns: auto auto;
+     margin:0 auto;
+   
+}
+
+.kalit button{
+    padding: 20px  ;
+    width: 80%;
+    margin-left: 50px;
+    border-radius: 20px;
+    background-color: rgb(71, 241, 122);
+    font-size: 30px;
+    font-weight: 500;
+    color: rgb(1, 58, 13);
+}
+
+.ochiq-stil {
+  display: flex;
+ flex-direction: column;
+   gap: 2%;
+   margin-bottom: 1rem;
+
+
+}
+.ochiq-stil input {
+  background-color: #bef4cd;
+  padding: 2rem 4rem;
+  border-radius: 4rem;
+  font-weight: 600;
+  color: #ac0101;
+  font-size: 2.5rem;
+  border: 3px solid rgb(3, 55, 55);
+  marign: 1rem;
+}
+
+.ochiq-tartib-raqam{
+  font-size: 1.8rem;
+ color: #06cb41;
+ margin-left: 10px;
+
+  
+}
+#yopish{
+  color: rgb(4, 23, 149);
+ 
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  border: 0.2rem solid rgb(86, 108, 255);
+  cursor: pointer;
+  background: rgb(0, 255, 153);
+  font-size: 2rem;
+  font-weight: 500;
+}
+.orqafon-tekshirish button{
+    background-color:#07d441 ;
+    height: 5rem;
+    margin: 2rem 1rem;
+    width: 90%;
+    border-radius: 5rem;
+  
+}
+
+.izoh{
+  margin-left: 0.5rem;
+  color: rgb(0, 255, 0);
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.natija-quti{
+  width: 90%;
+  height: 50%;
+  font-size: 50px;
+}
+}
+

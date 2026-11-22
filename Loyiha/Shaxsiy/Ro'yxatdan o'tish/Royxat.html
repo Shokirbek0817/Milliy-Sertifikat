@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
        <title>Kirish</title>
        <link rel="stylesheet" href="./kirish.css">
     </head>
@@ -11,16 +13,20 @@
                  <div class="kirish-matn">
                     Ro'yxatdan o'tish uchun quyidagilarni to'ldiring
                  </div>
-                    <div>
-                        <a href="./Kirish qism.html" class="yangi-foydalanuvchi">
-                          Tizimda allaqachon bormisiz
+                    <div class="navbar">
+                        <div>
+                           <a href="./Kirish qism.html" class="yangi-foydalanuvchi">
+                          Tizimda bormisiz
                         </a>
-                        <a href="./Ro'yxatdan o'tish oynasi.html" class="yangi-foydalanuvchi">
-                          Asosiyga qaytish
-                        </a>
+                        </div>
+                         <div>
+                           <a href="./Ro'yxatdan o'tish oynasi.html" class="yangi-foydalanuvchi">
+                             Asosiyga qaytish
+                           </a>
+                         </div>
                     </div>
                 
-               </div>
+                </div>
                 <form action="/server.php" method="get" class="form">
                     <label  type="number" class="matn tel-raqam-matn" > Telefon raqamingizni kiriting</label>
                     <input type="text" name="number" placeholder="+998 00 000 00 00 " class="tel-raqam">

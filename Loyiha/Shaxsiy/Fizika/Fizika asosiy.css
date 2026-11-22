@@ -2,6 +2,18 @@
     width: 1140px;
     margin:  0 auto;
 }
+button{
+    color: rgb(14, 0, 166);
+    text-align: center;
+    padding: 10px 50px;
+    margin: 0 auto;
+    border-radius:10px ;
+    background-color: #6cfaac;
+    font-size: 20px;
+    font-weight: 600;
+    display: none;
+    
+}
 
 
 .brend img {
@@ -44,15 +56,20 @@ ul {
     list-style-type: none; 
 } 
 
-.tugma {
-    color: white;
-     background: linear-gradient(to right,rgb(7, 42, 0), rgb(0, 103, 39) );
-     color: #6cfaac;
+
+ .tugma {
+    
+     background: linear-gradient(to right,rgb(71, 254, 153), rgb(24, 197, 90), rgb(4, 239, 121) );
+     color: #060136;
     border: 2px solid rgb(161, 249, 183) ;
     border-radius: 5px;
     padding: 10px 50px;
+    font-size: 20px;
+    font-weight: 700;
      transition: all 0.2s ease-in-out;
+     box-shadow: 10px 10px 10px   rgb(0, 0, 0);
 }
+
 .tugma:hover {
     background-position:  left;
      background: linear-gradient(to right, rgb(2, 69, 28) , rgb(7, 42, 0));
@@ -60,7 +77,7 @@ ul {
      border: 3px solid rgb(255, 255, 255) ;
     }
      .fanni-ozgartirish a {
-        color: rgb(89, 162, 235);
+      color: rgb(7, 4, 79);
          transition: all 0.2s ease-in-out;
      }
       .fanni-ozgartirish a:hover{
@@ -86,15 +103,7 @@ ul {
   
 }
 
-.asosiy-rasm img{
-    border-radius: 50px ;
-    width: 100%;
-    display: inline-block;
-    float: left;
-    height: 560px;
-      margin: 20px -50px ;
 
-}
 .matn{
     padding:  80px 90px ;
     font-size: 40px;
@@ -128,4 +137,188 @@ ul {
 }
 .footer-matn {
     color: #797979;
+}
+@media only screen and (max-width:767px){
+    .container{
+        width: 100%;
+    }
+    .menyu{
+    background-color: hsl(177, 94%, 19%);
+    padding: 20px;
+    border-radius:50px ;
+    text-align: center;
+    margin-bottom: 0;
+    display: flex;
+    text-align: center;
+}
+    .qidiruv{
+    position: fixed;
+    width: 90%;
+}
+.brend img {
+   display:none;
+}
+
+
+
+.qidiruv-elementlari{
+     background: rgb(165, 255, 159);
+    display:flex;
+   flex-direction: column;
+    border: 6px solid rgb(1, 104, 18);
+    display: none;
+    border-radius: 50px;
+  
+    
+
+}
+.qidiruv-elementi{
+    margin: 3px 0;
+    padding: 40px 0;
+
+}
+
+.qidiruv-elementi a{
+   text-decoration: dotted;
+   margin: 0px;
+   padding: 20px 40px;
+   text-align: center;
+
+}
+ul {
+    list-style-type: none; 
+} 
+
+.tugma {
+    color: rgb(255, 253, 253);
+     
+     font-size:20px ;
+     font-weight: 500;
+   
+    border: 3px solid rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0px 0px;
+     transition: all 0.2s ease-in-out;
+   
+}
+
+     .asosiy-tushunchalar{
+    margin-top: 6rem;
+    background-color: rgb(65, 151, 111);
+    border-radius: 50px;
+    display: flex;
+     display: inline-block;
+    justify-content: center;
+    gap: 50px;
+    height: auto;
+    margin-bottom: 0 20px;
+    width:100%
+}
+.asosiy-matn{
+  background-color:rgb(11, 117, 91);
+  margin: 10px 10px ;
+  border-radius: 20px;
+  
+  
+}
+
+
+.matn{
+    padding: 10px;
+    font-size: 12px;
+    font-weight:900 ;
+    line-height: 18px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.qidiruv-elementlari.korinsin {
+    display: flex;
+}
+
+button{
+   display: block;
+
+}
+.fanni-ozgartirish a {
+      color: rgb(7, 4, 79);
+       font-size: 20px;
+    font-weight: 700;
+
+}
+}
+@media only screen and (min-width: 767px) and (max-width: 1035px) {
+      .container{
+        width: 90%;
+
+    }
+  
+    .qidiruv{
+    position: fixed;
+    width: 85%;
+    
+  
+   
+}
+.brend img {
+   display:none;
+}
+.qidiruv-elementlari{
+     background: linear-gradient(to right, #17776a, #4ade80, #17776a);
+    display:flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    border-radius: 50px;
+    margin-top: 10px;
+    height: auto;
+
+
+}
+.tugma  {
+      display: inline-block;
+     background: linear-gradient(to right,rgb(71, 254, 153), rgb(24, 197, 90), rgb(4, 239, 121) );
+     color: #060136;
+    border: 2px solid rgb(161, 249, 183) ;
+    border-radius: 5px;
+    padding: 5px 50px;
+    font-size: 20px;
+     width: 85%;
+     text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+
+     transition: all 0.2s ease-in-out;
+     box-shadow: 10px 10px 10px   rgb(0, 20, 3);
+}
+  .asosiy-tushunchalar{
+    margin-top: 20rem;
+    background-color: rgb(65, 151, 111);
+    border-radius: 50px;
+    display: flex;
+     display: inline-block;
+    justify-content: center;
+    gap: 50px;
+    height: auto;
+    margin-bottom: 0 20px;
+    width:100%
+}
+.asosiy-matn{
+  background-color:rgb(11, 117, 91);
+  margin: 10px 10px ;
+  border-radius: 20px;
+  
+  
+}
+
+
+.matn{
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    font-weight:900 ;
+    line-height: 40px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
 }
