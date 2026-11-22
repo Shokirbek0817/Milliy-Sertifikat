@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         showMessage(messageBox, "Kirish muvaffaqiyatli bajarildi.", false);
-        window.location.href = "/Shaxsiy/Kirish/Kirish%20qismi.html";
+        window.location.href = encodeURI("/Shaxsiy/Kirish/Kirish qismi.html");
       } catch (error) {
         showMessage(
           messageBox,
@@ -120,12 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showMessage(
           messageBox,
-          "Ro'yxatdan o'tish muvaffaqiyatli bajarildi. Kirish sahifasiga yo'naltirilmoqda...",
+          "Ro'yxatdan o'tish muvaffaqiyatli bajarildi. Fanlar sahifasiga yo'naltirilmoqda...",
           false,
         );
         setTimeout(() => {
-          window.location.href =
-            "/Shaxsiy/Ro%27yxatdan%20o%27tish/Kirish%20qism.html";
+          window.location.href = encodeURI("/Shaxsiy/Kirish/Kirish qismi.html");
         }, 700);
       } catch (error) {
         showMessage(

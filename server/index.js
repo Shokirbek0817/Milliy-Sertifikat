@@ -144,10 +144,19 @@ app.post("/api/register", registerLimiter, (req, res) => {
     .prepare("INSERT INTO users (phone, password_hash) VALUES (?, ?)")
     .run(phone, passwordHash);
 
+  const user = { id: result.lastInsertRowid, phone };
+  const token = signToken(user);
+  res.cookie("auth_token", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+
   return res.status(201).json({
     success: true,
     message: "Ro'yxatdan o'tish muvaffaqiyatli bajarildi.",
-    user: { id: result.lastInsertRowid, phone },
+    user,
   });
 });
 
@@ -231,6 +240,18 @@ app.get("/", (req, res) => {
   }
 
   return res.redirect(welcomePath);
+});
+
+app.get("/welcome", (req, res) => {
+  res.redirect("/Shaxsiy/Ro'yxatdan o'tish/Ro'yxatdan o'tish oynasi.html");
+});
+
+app.get("/login", (req, res) => {
+  res.redirect("/Shaxsiy/Ro'yxatdan o'tish/Kirish qism.html");
+});
+
+app.get("/register", (req, res) => {
+  res.redirect("/Shaxsiy/Ro'yxatdan o'tish/Royxat.html");
 });
 
 app.use(express.static(loyihaDir));
